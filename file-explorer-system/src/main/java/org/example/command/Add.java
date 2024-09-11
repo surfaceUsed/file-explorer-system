@@ -22,10 +22,14 @@ class Add implements Command {
 
     @Override
     public void execute() {
-        try {
-            this.fileDirectory.createNewFile(this.root, this.state, this.fileName);
-        } catch (IOException e) {
-            System.out.println("Error creating file:" + e.getMessage());
+        if (state == AppCommand.CREATE_FILE) {
+            try {
+                this.fileDirectory.createNewFile(this.root, this.fileName);
+            } catch (IOException e) {
+                System.out.println("Error creating file:" + e.getMessage());
+            }
+        } else {
+            this.fileDirectory.createNewDirectory(this.root, this.fileName);
         }
     }
 }
