@@ -47,7 +47,6 @@ public final class FileRemover {
                 return deleteDirectories(directoriesToDelete);
             }
         }
-        System.out.println("Failed to delete file at path \"" + rootFile.getPath() + "\".");
         return false;
     }
 
