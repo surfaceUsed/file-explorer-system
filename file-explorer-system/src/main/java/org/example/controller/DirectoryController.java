@@ -88,9 +88,8 @@ public class DirectoryController {
             System.out.println("***** Not a valid directory! *****");
             this.exitFileSystem = true;
         } else {
-            this.fileSystem.updateCurrentDirectory(this.root);
             View.printDirectoryDetails(this.root);
-            System.out.println("Enter the action you want to take (enter .help for input commands):");
+            System.out.println("Enter the action you want to take (enter \".help\" for list of input commands):");
         }
     }
 
@@ -104,7 +103,7 @@ public class DirectoryController {
                 "Write name of file/directory: ";
         System.out.println(info);
         String[] userInput = parseInput();
-        Command request = RequestHandler.getRequest(this.currentState, this.fileSystem, userInput);
+        Command request = RequestHandler.getRequest(this.currentDirectory, this.currentState, this.fileSystem, userInput);
         if (request != null) {
             request.execute();
         } else {
@@ -120,7 +119,6 @@ public class DirectoryController {
         File previousDirectory = DirectoryNavigator.getPreviousDirectory(this.currentDirectory);
         if (previousDirectory != null && !this.currentDirectory.equals(this.root)) {
             this.currentDirectory = previousDirectory;
-            this.fileSystem.updateCurrentDirectory(this.currentDirectory);
             System.out.println("Directory of \"" + previousDirectory.getPath() + "\".");
         } else {
             System.out.println("***** Already in final root directory *****");
@@ -133,7 +131,6 @@ public class DirectoryController {
         File nextDirectory = DirectoryNavigator.getNextDirectory(this.currentDirectory, directory);
         if (nextDirectory != null) {
             this.currentDirectory = nextDirectory;
-            this.fileSystem.updateCurrentDirectory(this.currentDirectory);
             System.out.println("Directory of \"" + nextDirectory.getPath() + "\".");
         } else {
             System.out.println("***** Invalid directory *****");
@@ -152,7 +149,6 @@ public class DirectoryController {
         if (directory.isDirectory()) {
             this.root = directory;
             this.currentDirectory = directory;
-            this.fileSystem.updateCurrentDirectory(this.root);
             System.out.println("Directory changed successfully.");
         } else {
             System.out.println("***** Invalid directory path *****");
@@ -178,3 +174,4 @@ public class DirectoryController {
         }
     }
 }
+
