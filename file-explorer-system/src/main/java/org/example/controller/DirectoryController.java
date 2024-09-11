@@ -90,7 +90,7 @@ public class DirectoryController {
         } else {
             this.fileSystem.updateCurrentDirectory(this.root);
             View.printDirectoryDetails(this.root);
-            System.out.println("Enter the action you want to take:");
+            System.out.println("Enter the action you want to take (enter .help for input commands):");
         }
     }
 
