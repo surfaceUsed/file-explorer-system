@@ -142,7 +142,7 @@ public class DirectoryController {
 
     private void searchForFiles() {
         System.out.println("Search for file/directory:");
-        List<DirectoryFile> matches = DirectoryNavigator.findAllMatchingFiles(this.root, IOUtil.writeInput());
+        List<DirectoryFile> matches = DirectoryNavigator.findAllMatchingFiles(this.currentDirectory, IOUtil.writeInput());
         View.printSearchMatchResults(matches);
     }
 
