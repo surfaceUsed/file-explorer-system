@@ -13,7 +13,7 @@ class Add implements Command {
     private final FileService fileDirectory;
     private final String fileName;
 
-    Add(File root,AppCommand state, FileService fileDirectory, String fileName) {
+    Add(File root, AppCommand state, FileService fileDirectory, String fileName) {
         this.root = root;
         this.state = state;
         this.fileDirectory = fileDirectory;
