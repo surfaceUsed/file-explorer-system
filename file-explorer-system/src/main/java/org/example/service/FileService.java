@@ -7,11 +7,9 @@ import java.io.IOException;
 
 public interface FileService {
 
-    void updateCurrentDirectory(File directory);
+    void createNewFile(File root, AppCommand state, String fileName) throws IOException;
 
-    void createNewFile(AppCommand state, String fileName) throws IOException;
+    void deleteFile(File root, String fileName);
 
-    void deleteFile(String fileName);
-
-    void updateFileName(String[] fileInfo);
+    void updateFileName(File root, String[] fileInfo);
 }
