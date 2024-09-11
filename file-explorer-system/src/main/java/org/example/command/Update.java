@@ -18,6 +18,6 @@ class Update implements Command {
 
     @Override
     public void execute() {
-        this.fileSystem.updateFileName(this.root, this.fileInfo);
+        this.fileSystem.updateFileName(this.root, this.fileInfo[0].trim(), this.fileInfo[1].trim());
     }
 }
